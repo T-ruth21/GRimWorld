@@ -48,6 +48,7 @@
     <Compile Include="Hediff_MentalIllness.cs" />
     <Compile Include="PanicAttackDef.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnroofedWallBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Defs" />
