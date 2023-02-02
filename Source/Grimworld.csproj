@@ -9,13 +9,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Grimworld</RootNamespace>
     <AssemblyName>Grimworld</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Common\Assemblies\</OutputPath>
+    <OutputPath>..\..\Assemblies</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
@@ -46,8 +46,11 @@
     <Compile Include="HediffComp_TherapySession.cs" />
     <Compile Include="HediffGiver_Trauma.cs" />
     <Compile Include="Hediff_MentalIllness.cs" />
+    <Compile Include="MentalBreakWorker_InsectTerror.cs" />
+    <Compile Include="MentalState_PanicFleeSpider.cs" />
     <Compile Include="PanicAttackDef.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThoughtWorker_Arachnophobia.cs" />
     <Compile Include="UnroofedWallBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>

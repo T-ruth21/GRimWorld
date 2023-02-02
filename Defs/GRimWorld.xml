@@ -38,7 +38,7 @@
 
       <TraitDef>
         <defName>Self-Regulating</defName>
-        <commonality>3.0</commonality>
+        <commonality>0.2</commonality>
         <degreeDatas>
           <li>
             <label>self-regulating</label>
