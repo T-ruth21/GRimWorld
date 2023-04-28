@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<Defs>
+  <HediffDef ParentName="DiseaseBase">
+    <defName>TRuth_DepressiveEpisode</defName>
+    <hediffClass>Grimworld.Hediff_Depression</hediffClass>
+    <label>depression</label>
+    <description>A very subtle, yet serious disease of the mind.</description>
+    <initialSeverity>0.8</initialSeverity>
+    <minSeverity>0.05</minSeverity>
+	<maxSeverity>1.2</maxSeverity>
+    <chanceToCauseNoPain>1</chanceToCauseNoPain>
+    <tendable>true</tendable>
+    <stages>
+      <!-- managed -->
+      <li>
+        <label>managed</label>
+        <capMods>
+          <li>
+            <capacity>Talking</capacity>
+            <offset>-0.05</offset>
+          </li>
+        </capMods>
+        <statOffsets>
+          <GlobalLearningFactor>-0.1</GlobalLearningFactor>
+        </statOffsets>
+        <modExtensions>
+            <li Class="Grimworld.ModExtension_DepressiveThoughts">
+                <goodThoughtsMultiplier>0.9</goodThoughtsMultiplier>
+                <badThoughtsMultiplier>1</badThoughtsMultiplier>
+            </li>
+        </modExtensions>
+      </li>
+      <!-- minor -->
+      <li>
+        <minSeverity>0.15</minSeverity>
+        <label>mild</label>
+        <restFallFactor>1.1</restFallFactor>
+        <capMods>
+          <li>
+            <capacity>Talking</capacity>
+            <offset>-0.1</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.05</offset>
+          </li>
+        </capMods>
+        <statOffsets>
+          <WorkSpeedGlobal>-0.10</WorkSpeedGlobal>
+          <GlobalLearningFactor>-0.2</GlobalLearningFactor>
+        </statOffsets>
+        <modExtensions>
+            <li Class="Grimworld.ModExtension_DepressiveThoughts">
+                <goodThoughtsMultiplier>0.8</goodThoughtsMultiplier>
+                <badThoughtsMultiplier>1.1</badThoughtsMultiplier>
+            </li>
+        </modExtensions>
+      </li>
+      <!-- minor -->
+      <li>
+        <minSeverity>0.4</minSeverity>
+        <label>mild</label>
+        <restFallFactor>1.2</restFallFactor>
+        <capMods>
+          <li>
+            <capacity>Talking</capacity>
+            <offset>-0.15</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.05</offset>
+          </li>
+        </capMods>
+        <statOffsets>
+          <WorkSpeedGlobal>-0.15</WorkSpeedGlobal>
+          <GlobalLearningFactor>-0.25</GlobalLearningFactor>
+          <PsychicSensitivity>-0.1</PsychicSensitivity>
+        </statOffsets>
+        <modExtensions>
+            <li Class="Grimworld.ModExtension_DepressiveThoughts">
+                <goodThoughtsMultiplier>0.8</goodThoughtsMultiplier>
+                <badThoughtsMultiplier>1.1</badThoughtsMultiplier>
+            </li>
+        </modExtensions>
+      </li>
+      <!-- severe -->
+      <li>
+        <minSeverity>0.6</minSeverity>
+        <label>severe</label>
+        <restFallFactor>1.5</restFallFactor>
+        <painFactor>0.8</painFactor>
+        <capMods>
+          <li>
+            <capacity>Talking</capacity>
+            <offset>-0.3</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.2</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.1</offset>
+          </li>
+        </capMods>
+        <statOffsets>
+          <WorkSpeedGlobal>-0.4</WorkSpeedGlobal>
+          <GlobalLearningFactor>-0.4</GlobalLearningFactor>
+          <PsychicSensitivity>-0.3</PsychicSensitivity>
+        </statOffsets>
+        <modExtensions>
+            <li Class="Grimworld.ModExtension_DepressiveThoughts">
+                <goodThoughtsMultiplier>0.6</goodThoughtsMultiplier>
+                <badThoughtsMultiplier>1.2</badThoughtsMultiplier>
+            </li>
+        </modExtensions>
+      </li>
+      <!-- severe -->
+      <li>
+        <minSeverity>0.8</minSeverity>
+        <label>severe</label>
+        <restFallFactor>1.75</restFallFactor>
+        <painFactor>0.7</painFactor>
+        <capMods>
+          <li>
+            <capacity>Talking</capacity>
+            <offset>-0.5</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.3</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+        <statOffsets>
+          <WorkSpeedGlobal>-0.6</WorkSpeedGlobal>
+          <GlobalLearningFactor>-0.5</GlobalLearningFactor>
+          <PsychicSensitivity>-0.4</PsychicSensitivity>
+        </statOffsets>
+        <modExtensions>
+            <li Class="Grimworld.ModExtension_DepressiveThoughts">
+                <goodThoughtsMultiplier>0.6</goodThoughtsMultiplier>
+                <badThoughtsMultiplier>1.3</badThoughtsMultiplier>
+            </li>
+        </modExtensions>
+      </li>
+      <!-- extreme  -->
+      <li>
+        <minSeverity>1</minSeverity>
+        <label>extreme</label>
+        <restFallFactor>2.0</restFallFactor>
+        <painFactor>0.5</painFactor>
+        <capMods>
+          <li>
+            <capacity>Talking</capacity>
+            <offset>-0.80</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.5</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.2</offset>
+          </li>
+        </capMods>
+        <statOffsets>
+          <WorkSpeedGlobal>-0.8</WorkSpeedGlobal>
+          <GlobalLearningFactor>-0.9</GlobalLearningFactor>
+          <PsychicSensitivity>-0.6</PsychicSensitivity>
+        </statOffsets>
+        <modExtensions>
+            <li Class="Grimworld.ModExtension_DepressiveThoughts">
+                <goodThoughtsMultiplier>0.2</goodThoughtsMultiplier>
+                <badThoughtsMultiplier>1.5</badThoughtsMultiplier>
+            </li>
+        </modExtensions>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <baseTendDurationHours>120</baseTendDurationHours>
+        <severityPerDayTended>-0.003425</severityPerDayTended>
+      </li>
+      <li Class="HediffCompProperties_Immunizable">
+        <severityPerDayNotImmune>0.0002</severityPerDayNotImmune>
+        <severityPerDayNotImmuneRandomFactor>
+          <min>0.4</min>
+          <max>4</max>
+        </severityPerDayNotImmuneRandomFactor>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>TRuth_DepressedThoughts</defName>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <workerClass>Grimworld.ThoughtWorker_DepressedThoughts</workerClass>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>something feels off</label>
+        <description>I can't put my finger on it.</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+      <li>
+        <label>something's not right</label>
+        <description>I don't feel so good. I don't know why.</description>
+        <baseMoodEffect>-6</baseMoodEffect>
+      </li>
+      <li>
+        <label>unhappy</label>
+        <description>I'm really not feeling well today.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>deeply unhappy</label>
+        <description>I don't know what to do.</description>
+        <baseMoodEffect>-14</baseMoodEffect>
+      </li>
+      <li>
+        <label>nothing is okay</label>
+        <description>I can't take this anymore!</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+      <li>
+        <label>...</label>
+        <description>Why am I still here?</description>
+        <baseMoodEffect>-33</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

@@ -13,5 +13,6 @@ namespace Grimworld
         public ThinkNode_ConditionalMentalState state;
         public MentalState_WanderOwnRoom room;
         public JobGiver_WanderOwnRoom jroom;
+        public ThoughtHandler Handler;
     }
 }

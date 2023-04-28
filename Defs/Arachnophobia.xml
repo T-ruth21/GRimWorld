@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Defs>
-    <MentalBreakDef>
-        <defName>TRuth_SpiderTerror</defName>
-        <label>spider terror</label>
-        <intensity>Minor</intensity>
-        <workerClass>Grimworld.MentalBreakWorker_InsectTerror</workerClass>
-        <mentalState>TRuth_PanicFleeSpider</mentalState>
-        <requiredTrait>TRuth_Arachnophobic</requiredTrait>
-      </MentalBreakDef>
-    
-      <MentalStateDef ParentName="BaseMentalState">
-        <defName>TRuth_PanicFleeSpider</defName>
-        <label>panic-fleeing spider</label>
-        <stateClass>Grimworld.MentalState_PanicFleeSpider</stateClass>
-        <category>Misc</category>
-        <nameColor>(0.65, 0.9, 0.93)</nameColor>
-        <beginLetterLabel>fleeing spider</beginLetterLabel>
-        <beginLetter>{0} is fleeing spiders.</beginLetter>
-        <recoveryMessage>{0} is no longer fleeing spiders.</recoveryMessage>
-        <baseInspectLine>Mental state: Fleeing spiders</baseInspectLine>
-        <blockNormalThoughts>true</blockNormalThoughts>
-        <minTicksBeforeRecovery>60</minTicksBeforeRecovery>
-      </MentalStateDef>
+  <MentalBreakDef>
+    <defName>TRuth_SpiderTerror</defName>
+    <label>spider terror</label>
+    <intensity>Minor</intensity>
+    <workerClass>Grimworld.MentalBreakWorker_InsectTerror</workerClass>
+    <mentalState>TRuth_PanicFleeSpider</mentalState>
+    <requiredTrait>TRuth_Arachnophobic</requiredTrait>
+  </MentalBreakDef>
+  
+  <MentalStateDef ParentName="BaseMentalState">
+    <defName>TRuth_PanicFleeSpider</defName>
+    <label>panic-fleeing spider</label>
+    <stateClass>Grimworld.MentalState_PanicFleeSpider</stateClass>
+    <category>Misc</category>
+    <nameColor>(0.65, 0.9, 0.93)</nameColor>
+    <beginLetterLabel>fleeing spider</beginLetterLabel>
+    <beginLetter>{0} is fleeing spiders.</beginLetter>
+    <recoveryMessage>{0} is no longer fleeing spiders.</recoveryMessage>
+    <baseInspectLine>Mental state: Fleeing spiders</baseInspectLine>
+    <blockNormalThoughts>true</blockNormalThoughts>
+    <minTicksBeforeRecovery>60</minTicksBeforeRecovery>
+  </MentalStateDef>
 
-      <TraitDef>
-        <defName>TRuth_Arachnophobic</defName>
-        <commonality>0.6</commonality>
-        <degreeDatas>
-          <li>
-            <label>arachnophobic</label>
-            <description>{PAWN_nameDef} was told that spiders are harmless and more afraid of you. But {PAWN_pronoun} is not so sure about that.</description>
-            <!-- <randomMentalState>Binging_Food</randomMentalState> -->
-            <!-- <mentalBreakMtbDays>0.1</mentalBreakMtbDays>
-            <mentalBreakDef>TRuth_SpiderTerror</mentalBreakDef> -->
-          </li>
-        </degreeDatas>
-      </TraitDef>
+  <TraitDef>
+    <defName>TRuth_Arachnophobic</defName>
+    <commonality>0.6</commonality>
+    <degreeDatas>
+      <li>
+        <label>arachnophobic</label>
+        <description>{PAWN_nameDef} was told that spiders are harmless and more afraid of you. But {PAWN_pronoun} is not so sure about that.</description>
+      </li>
+    </degreeDatas>
+  </TraitDef>
 
-      <ThoughtDef>
-        <defName>TRuth_Arachnophobia</defName>
-        <workerClass>Grimworld.ThoughtWorker_Arachnophobia</workerClass>
-        <developmentalStageFilter>Child, Adult</developmentalStageFilter>
-        <stages>
-          <li>
-            <label>afraid of spiders</label>
-            <description>It has so many legs! Kill it! Kill it with fire!</description>
-            <baseMoodEffect>-10</baseMoodEffect>
-          </li>
-        </stages>
-      </ThoughtDef>
-
+  <ThoughtDef>
+    <defName>TRuth_Arachnophobia</defName>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <workerClass>Grimworld.ThoughtWorker_Arachnophobia</workerClass>
+    <requiredTraits>
+      <li>TRuth_Arachnophobic</li>
+    </requiredTraits>
+    <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>afraid of spiders</label>
+        <description>It has so many legs! Kill it! Kill it with fire!</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
 </Defs>
