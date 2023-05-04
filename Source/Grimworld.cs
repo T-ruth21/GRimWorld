@@ -3,9 +3,9 @@ using Verse;
 using Verse.AI;
 using RimWorld;
 
-namespace Grimworld
+namespace TRuth
 {
-    public class Grimworld
+    public class TRuth
     {
         public Hediff_Addiction requiredMentalIllness;
         public Hediff_Alcohol Alcohol;
@@ -14,5 +14,10 @@ namespace Grimworld
         public MentalState_WanderOwnRoom room;
         public JobGiver_WanderOwnRoom jroom;
         public ThoughtHandler Handler;
+        public HediffStage stage;
+        public HediffCompProperties_PsychicHarmonizer HediffCompPropertiesPsychicHarmonizer;
+        public Thought_PsychicHarmonizer ThoughtPsychicHarmonizer;
+        public HediffComp_PsychicHarmonizer PsychicHarmonizer;
+        public HediffWithComps HediffWithComps;
     }
 }
