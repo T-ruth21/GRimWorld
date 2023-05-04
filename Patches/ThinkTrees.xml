@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
     <Operation Class="PatchOperationAdd">
-        <!-- <xpath>Defs
-        /ThinkTreeDef[defName="MentalStateNonCritical"]
-        /thinkRoot[Class="ThinkNode_Tagger"]
-        /subNodes 
-        </xpath> -->
         <xpath>
             Defs
             /ThinkTreeDef[defName="MentalStateNonCritical"]
@@ -17,7 +12,7 @@
         <li Class="ThinkNode_ConditionalMentalState">
             <state>TRuth_PanicFleeSpider</state>
             <subNodes>
-            <li Class="Grimworld.JobGiver_FleeSpider" />
+            <li Class="TRuth.JobGiver_FleeSpider" />
             <li Class="JobGiver_WanderAnywhere">
                 <maxDanger>Some</maxDanger>
                 <locomotionUrgency>Jog</locomotionUrgency>

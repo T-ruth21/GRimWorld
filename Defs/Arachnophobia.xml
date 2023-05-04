@@ -5,7 +5,7 @@
     <defName>TRuth_SpiderTerror</defName>
     <label>spider terror</label>
     <intensity>Minor</intensity>
-    <workerClass>Grimworld.MentalBreakWorker_InsectTerror</workerClass>
+    <workerClass>TRuth.MentalBreakWorker_InsectTerror</workerClass>
     <mentalState>TRuth_PanicFleeSpider</mentalState>
     <requiredTrait>TRuth_Arachnophobic</requiredTrait>
   </MentalBreakDef>
@@ -13,7 +13,7 @@
   <MentalStateDef ParentName="BaseMentalState">
     <defName>TRuth_PanicFleeSpider</defName>
     <label>panic-fleeing spider</label>
-    <stateClass>Grimworld.MentalState_PanicFleeSpider</stateClass>
+    <stateClass>TRuth.MentalState_PanicFleeSpider</stateClass>
     <category>Misc</category>
     <nameColor>(0.65, 0.9, 0.93)</nameColor>
     <beginLetterLabel>fleeing spider</beginLetterLabel>
@@ -38,7 +38,7 @@
   <ThoughtDef>
     <defName>TRuth_Arachnophobia</defName>
     <thoughtClass>Thought_Situational</thoughtClass>
-    <workerClass>Grimworld.ThoughtWorker_Arachnophobia</workerClass>
+    <workerClass>TRuth.ThoughtWorker_Arachnophobia</workerClass>
     <requiredTraits>
       <li>TRuth_Arachnophobic</li>
     </requiredTraits>

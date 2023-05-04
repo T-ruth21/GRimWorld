@@ -2,16 +2,16 @@ using Verse.AI;
 using RimWorld;
 using Verse;
 
-namespace Grimworld
+namespace TRuth
 {
     public class MentalState_PanicFleeSpider : MentalState
     {
         private int lastInsectSeenTick = -1;
-
+    
         protected override bool CanEndBeforeMaxDurationNow => false;
-
+    
         public override RandomSocialMode SocialModeMax() => RandomSocialMode.Off;
-
+    
         public override void MentalStateTick()
         {
             base.MentalStateTick();
@@ -23,7 +23,7 @@ namespace Grimworld
                 return;
             this.RecoverFromState();
         }
-
+    
         public override void ExposeData()
         {
             base.ExposeData();

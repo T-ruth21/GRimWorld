@@ -1,12 +1,12 @@
 using RimWorld;
 using Verse;
 
-namespace Grimworld
+namespace TRuth
 {
     public class ThoughtWorker_CampfireCozyness : ThoughtWorker
     {
         public const float CampfireRadius = 6;
-
+    
         protected override ThoughtState CurrentStateInternal(Pawn p)
         {
             if (NearCampfire(p) 
@@ -16,7 +16,7 @@ namespace Grimworld
                 return ThoughtState.ActiveAtStage(0);
             return ThoughtState.Inactive;
         }
-
+    
         public static bool NearCampfire(Pawn pawn)
         {
             Map mapHeld = pawn.MapHeld;

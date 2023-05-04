@@ -2,7 +2,7 @@
 
 <Defs>
     <!-- <HediffDef ParentName="DiseaseBase">
-        <defName>GRimWorld_PanicAttack</defName>
+        <defName>TRuth_PanicAttack</defName>
         <label>panic attack</label>
         <labelNoun>a panic attack</labelNoun>
         <description>A state of panic which leads to a major inability to function. The victim freezes in fear and eventually looses consciousness.</description>
@@ -26,10 +26,10 @@
             </capMods>
             </li>
         </stages>
-    </HediffDef>
+    </HediffDef> -->
 
-    <MentalBreakDef>
-        <defName>GRimWorld_Panic</defName>
+    <!-- <MentalBreakDef>
+        <defName>TRuth_Panic</defName>
         <label>panic attack</label>
         <baseCommonality>1</baseCommonality>
         <intensity>Minor</intensity>
@@ -38,8 +38,7 @@
 
       <ThoughtDef>
         <defName>TRuth_CampfireCozyness</defName>
-        <!-- <thoughtClass>Thought_Situational</thoughtClass> -->
-        <workerClass>Grimworld.ThoughtWorker_CampfireCozyness</workerClass>
+        <workerClass>TRuth.ThoughtWorker_CampfireCozyness</workerClass>
         <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
         <stages>
           <li>
@@ -51,7 +50,7 @@
       </ThoughtDef>
 
       <TraitDef>
-        <defName>Self-Regulating</defName>
+        <defName>TRuth_Self-Regulating</defName>
         <commonality>0.8</commonality>
         <degreeDatas>
           <li>
@@ -82,95 +81,93 @@
         </conflictingTraits>
       </TraitDef>
 
-      <Defs>
-        <ThingDef ParentName="BaseBullet">
-          <defName>TST_Bullet_PlagueGun</defName>
-          <label>plague bullet</label>
-          <graphicData>
-            <texPath>Things/Projectile/Bullet_Small</texPath>
-            <graphicClass>Graphic_Single</graphicClass>
-          </graphicData>
-          <projectile>
-            <damageDef>Bullet</damageDef>
-            <damageAmountBase>12</damageAmountBase>
-            <stoppingPower>1</stoppingPower>
-            <speed>55</speed>
-          </projectile>
-        </ThingDef>
+      <ThingDef ParentName="BaseBullet">
+        <defName>TRuth_Bullet_DepressionGun</defName>
+        <label>plague bullet</label>
+        <graphicData>
+          <texPath>Things/Projectile/Bullet_Small</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+          <damageDef>Bullet</damageDef>
+          <damageAmountBase>12</damageAmountBase>
+          <stoppingPower>1</stoppingPower>
+          <speed>55</speed>
+        </projectile>
+      </ThingDef>
       
-        <ThingDef ParentName="BaseHumanMakeableGun">
-          <defName>TST_Gun_PlagueGun</defName>
-          <label>plague gun</label>
-          <description>A curious weapon notable for its horrible health effects.</description>
-          <graphicData>
-            <texPath>Things/Item/Equipment/WeaponRanged/Revolver</texPath>
-            <graphicClass>Graphic_Single</graphicClass>
-          </graphicData>
-          <uiIconScale>1.4</uiIconScale>
-          <soundInteract>Interact_Revolver</soundInteract>
-          <thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags>
-          <statBases>
-            <WorkToMake>4000</WorkToMake>
-            <Mass>1.4</Mass>
-            <AccuracyTouch>0.80</AccuracyTouch>
-            <AccuracyShort>0.75</AccuracyShort>
-            <AccuracyMedium>0.45</AccuracyMedium>
-            <AccuracyLong>0.35</AccuracyLong>
-            <RangedWeapon_Cooldown>1.6</RangedWeapon_Cooldown>
-          </statBases>
-          <weaponTags>
-            <li>SimpleGun</li>
-            <li>Revolver</li>
-          </weaponTags>
-          <weaponClasses>
-            <li>RangedLight</li>
-          </weaponClasses>
-          <costList>
-            <Steel>30</Steel>
-            <ComponentIndustrial>2</ComponentIndustrial>
-          </costList>
-          <recipeMaker>
-            <skillRequirements>
-              <Crafting>3</Crafting>
-            </skillRequirements>
-          </recipeMaker>
-          <verbs>
-            <li>
-              <verbClass>Verb_Shoot</verbClass>
-              <hasStandardCommand>true</hasStandardCommand>
-              <defaultProjectile>TST_Bullet_PlagueGun</defaultProjectile>
-              <warmupTime>0.3</warmupTime>
-              <range>25.9</range>
-              <soundCast>Shot_Revolver</soundCast>
-              <soundCastTail>GunTail_Light</soundCastTail>
-              <muzzleFlashScale>9</muzzleFlashScale>
-            </li>
-          </verbs>
-          <tools>
-            <li>
-              <label>grip</label>
-              <capacities>
-                <li>Blunt</li>
-              </capacities>
-              <power>9</power>
-              <cooldownTime>2</cooldownTime>
-            </li>
-            <li>
-              <label>barrel</label>
-              <capacities>
-                <li>Blunt</li>
-                <li>Poke</li>
-              </capacities>
-              <power>9</power>
-              <cooldownTime>2</cooldownTime>
-            </li>
-          </tools>
-          <modExtensions>
-            <li Class="TST_PlagueGun.ModExtension_PlagueBullet">
-                <addHediffChance>0.05</addHediffChance>
-                <hediffToAdd>Plague</hediffToAdd>
-            </li>
-        </modExtensions>
-        </ThingDef>
-      </Defs>
+      <ThingDef ParentName="BaseHumanMakeableGun">
+        <defName>TRuth_Gun_DepressionGun</defName>
+        <label>plague gun</label>
+        <description>A curious weapon notable for its horrible health effects.</description>
+        <graphicData>
+          <texPath>Things/Item/Equipment/WeaponRanged/Revolver</texPath>
+          <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <uiIconScale>1.4</uiIconScale>
+        <soundInteract>Interact_Revolver</soundInteract>
+        <thingSetMakerTags><li>RewardStandardQualitySuper</li></thingSetMakerTags>
+        <statBases>
+          <WorkToMake>4000</WorkToMake>
+          <Mass>1.4</Mass>
+          <AccuracyTouch>0.80</AccuracyTouch>
+          <AccuracyShort>0.75</AccuracyShort>
+          <AccuracyMedium>0.45</AccuracyMedium>
+          <AccuracyLong>0.35</AccuracyLong>
+          <RangedWeapon_Cooldown>1.6</RangedWeapon_Cooldown>
+        </statBases>
+        <weaponTags>
+          <li>SimpleGun</li>
+          <li>Revolver</li>
+        </weaponTags>
+        <weaponClasses>
+          <li>RangedLight</li>
+        </weaponClasses>
+        <costList>
+          <Steel>30</Steel>
+          <ComponentIndustrial>2</ComponentIndustrial>
+        </costList>
+        <recipeMaker>
+          <skillRequirements>
+            <Crafting>3</Crafting>
+          </skillRequirements>
+        </recipeMaker>
+        <verbs>
+          <li>
+            <verbClass>Verb_Shoot</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>TRuth_Bullet_DepressionGun</defaultProjectile>
+            <warmupTime>0.3</warmupTime>
+            <range>25.9</range>
+            <soundCast>Shot_Revolver</soundCast>
+            <soundCastTail>GunTail_Light</soundCastTail>
+            <muzzleFlashScale>9</muzzleFlashScale>
+          </li>
+        </verbs>
+        <tools>
+          <li>
+            <label>grip</label>
+            <capacities>
+              <li>Blunt</li>
+            </capacities>
+            <power>9</power>
+            <cooldownTime>2</cooldownTime>
+          </li>
+          <li>
+            <label>barrel</label>
+            <capacities>
+              <li>Blunt</li>
+              <li>Poke</li>
+            </capacities>
+            <power>9</power>
+            <cooldownTime>2</cooldownTime>
+          </li>
+        </tools>
+        <modExtensions>
+          <li Class="TRuth.ModExtension_PlagueBullet">
+              <addHediffChance>0.05</addHediffChance>
+              <hediffToAdd>TRuth_DepressiveEpisode</hediffToAdd>
+          </li>
+      </modExtensions>
+    </ThingDef>
 </Defs>

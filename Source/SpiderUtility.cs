@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
-namespace Grimworld
+namespace TRuth
 {
     public static class SpiderUtility
     {

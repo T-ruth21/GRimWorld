@@ -7,8 +7,8 @@
     <ProjectGuid>{D7D21B4A-1DA7-41D8-B202-C58CA8FA62AA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Grimworld</RootNamespace>
-    <AssemblyName>Grimworld</AssemblyName>
+    <RootNamespace>TRuth</RootNamespace>
+    <AssemblyName>TRuth</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,25 +42,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CampfireCozyness.cs" />
-    <Compile Include="Defs\HediffDefOfGRimWorld.cs" />
+    <Compile Include="Defs\HediffDefOfTRuth.cs" />
     <Compile Include="Defs\ModExtension_DepressiveThoughts.cs" />
+    <Compile Include="Defs\ModExtension_Hediff_Depression.cs" />
+    <Compile Include="Defs\ModExtension_PlagueBullet.cs" />
+    <Compile Include="Defs\ThoughtDefOfTRuth.cs" />
     <Compile Include="Grimworld.cs" />
-    <Compile Include="CustomMentalBreakDef.cs" />
-    <Compile Include="HediffComp_TherapySession.cs" />
-    <Compile Include="HediffGiver_Trauma.cs" />
+    <Compile Include="HediffCompProperties_DepressiveThoughts.cs" />
+    <Compile Include="HediffComp_DepressiveThoughts.cs" />
+    <Compile Include="HediffStage_DepressionStage.cs" />
     <Compile Include="Hediff_Depression.cs" />
-    <Compile Include="Hediff_MentalIllness.cs" />
     <Compile Include="JobGiver_FleeSpider.cs" />
     <Compile Include="MentalBreakWorker_InsectTerror.cs" />
     <Compile Include="MentalState_PanicFleeSpider.cs" />
-    <Compile Include="ModExtension_PlagueBullet.cs" />
-    <Compile Include="PanicAttackDef.cs" />
     <Compile Include="PlagueGun.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpiderUtility.cs" />
     <Compile Include="ThoughtWorker_Arachnophobia.cs" />
-    <Compile Include="ThoughtWorker_DepressedThoughts.cs" />
-    <Compile Include="UnroofedWallBehaviour.cs" />
+    <Compile Include="ThoughtWorker_Depressed.cs" />
+    <Compile Include="Thought_Depressed.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Patches" />

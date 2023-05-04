@@ -2,17 +2,17 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace Grimworld
+namespace TRuth
 {
     public class ThoughtWorker_Arachnophobia : ThoughtWorker
     {
         public const float InsectRadius = 19.9f;
-
+    
         protected override ThoughtState CurrentStateInternal(Pawn pawn)
         {
             return !NearInsect(pawn) ? ThoughtState.Inactive : ThoughtState.ActiveAtStage(0);
         }
-
+    
         public static bool NearInsect(Pawn pawn)
         {
             Map mapHeld = pawn.MapHeld;

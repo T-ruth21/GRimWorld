@@ -3,7 +3,7 @@ using UnityEngine;
 using Verse;
 using Verse.AI;
 
-namespace Grimworld
+namespace TRuth
 {
     public class MentalBreakWorker_InsectTerror : MentalBreakWorker
     {

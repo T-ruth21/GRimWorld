@@ -1,6 +1,6 @@
 using Verse;
 
-namespace Grimworld
+namespace TRuth
 {
     public class ModExtension_DepressiveThoughts : DefModExtension
     {

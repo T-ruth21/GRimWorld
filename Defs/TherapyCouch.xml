@@ -2,8 +2,8 @@
 
 <Defs>
 
-  <ThingDef ParentName="BedWithQualityBase">
-    <defName>GRimWorld_TherapyCouch</defName>
+  <!-- <ThingDef ParentName="BedWithQualityBase">
+    <defName>TRuth_TherapyCouch</defName>
     <label>therapy couch</label>
     <description>A comfy couch to relax and open thoughts. Improves psychotherapy intensity.</description>
     <graphicData>
@@ -59,6 +59,6 @@
     </researchPrerequisites>
     <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
     <uiIconScale>0.90</uiIconScale>
-  </ThingDef>
+  </ThingDef> -->
 
 </Defs>

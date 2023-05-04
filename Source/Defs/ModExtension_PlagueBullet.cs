@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace Grimworld
+namespace TRuth
 {
     public class ModExtension_PlagueBullet : DefModExtension
     {
