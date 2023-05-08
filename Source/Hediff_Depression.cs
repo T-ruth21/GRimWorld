@@ -37,7 +37,7 @@ namespace TRuth
                 }
             }
             Thought_Depressed newThought = (Thought_Depressed) ThoughtMaker.MakeThought(this.HediffDepression.thought);
-            //newThought.depression = (Hediff_Depression) this.parent;
+            newThought.depression = this;
             pawn.needs.mood.thoughts.memories.TryGainMemory((Thought_Memory) newThought);
             
             

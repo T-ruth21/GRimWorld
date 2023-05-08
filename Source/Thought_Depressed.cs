@@ -20,7 +20,7 @@ namespace TRuth
         
          public override float MoodOffset()
          {
-             if (ThoughtUtility.ThoughtNullified(this.pawn, this.def) || this.ShouldDiscard || depression.depressiveThoughts == null)
+             if (ThoughtUtility.ThoughtNullified(pawn, def) || pawn.Dead || pawn.needs?.mood == null || depression?.depressiveThoughts == null)
                  return 0.0f;
              
              float sumOfPositiveThoughts = 0;
@@ -50,15 +50,15 @@ namespace TRuth
              //return (float) (baseMoodOffset * otherMood) * sensitivity;
          }
         
-         public override bool ShouldDiscard
-         {
-             get
-             {
-                 //Pawn pawn = depression.pawn;
-                 return pawn.health.Dead 
-                        || pawn.needs?.mood == null 
-                        || !this.pawn.health.hediffSet.HasHediff(HediffDefOfTRuth.TRuth_DepressiveEpisode);
-             }
-         }
+         // public override bool ShouldDiscard
+         // {
+         //     get
+         //     {
+         //         //Pawn pawn = depression.pawn;
+         //         return pawn.health.Dead 
+         //                || pawn.needs?.mood == null 
+         //                || !this.pawn.health.hediffSet.HasHediff(HediffDefOfTRuth.TRuth_DepressiveEpisode);
+         //     }
+         // }
     }
 }
