@@ -8,22 +8,24 @@ namespace TRuth
 {
     public class Hediff_Depression : HediffWithComps
     {
-        public bool panic = false;
-        public ModExtension_DepressiveThoughts[] DepressiveThoughts;
-        public ModExtension_DepressiveThoughts depressiveThoughts => 
-            base.def.GetModExtension<ModExtension_DepressiveThoughts>();
+        public bool Panic = false;
 
-        public ModExtension_Hediff_Depression HediffDepression =>
+        public ModExtension_Hediff_Depression ModExtensionHediffDepression =>
             base.def.GetModExtension<ModExtension_Hediff_Depression>();
         
         //public virtual HediffStage CurStage => !this.def.stages.NullOrEmpty<HediffStage>() ? this.def.stages[this.CurStageIndex] : (HediffStage) null;
         
-    //[LogPerformance]
+        //[LogPerformance]
         public override void Tick()
         {
             base.Tick();
             
-            //Pawn pawn = this.pawn;
+            HaveThought();
+            HavePanic();
+        }
+
+        private void HaveThought()
+        {
             if (pawn.IsHashIntervalTick(150) || pawn.needs?.mood == null || pawn.Faction == null)
                 return;
             
@@ -36,18 +38,21 @@ namespace TRuth
                     return;
                 }
             }
-            Thought_Depressed newThought = (Thought_Depressed) ThoughtMaker.MakeThought(this.HediffDepression.thought);
-            newThought.depression = this;
+            
+            Thought_Depressed newThought = (Thought_Depressed) ThoughtMaker.MakeThought(this.ModExtensionHediffDepression.ThoughtDef);
+            
             pawn.needs.mood.thoughts.memories.TryGainMemory((Thought_Memory) newThought);
-            
-            
-            
+            newThought.depression = this;
+        }
+
+        private void HavePanic()
+        {
             if(!pawn.Downed)
             {
                 switch ((pawn.GetHashCode() ^ (GenLocalDate.DayOfYear(pawn) + GenLocalDate.Year(pawn) + (int)(GenLocalDate.DayPercent(pawn) * 5) * 60) * 391) % (50 * (13 - ((this.CurStageIndex + 1) * 2))))
                 {
                     case 0:
-                        panic = true;
+                        Panic = true;
                         this.Severity += 0.00000002f;
                         if (pawn.Spawned && pawn.RaceProps.Humanlike)
                         {
@@ -62,15 +67,14 @@ namespace TRuth
                         }
                         break;
                     default:
-                        panic = false;
+                        Panic = false;
                         break;
                 }
             }
             else
             {
-                panic = false;
+                Panic = false;
             }
         }
-
     }
 }

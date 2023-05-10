@@ -10,6 +10,9 @@ namespace TRuth
     {
          public Hediff_Depression depression;
 
+         public ModExtension_DepressiveThoughts me_depressiveThoughts => 
+             base.def.GetModExtension<ModExtension_DepressiveThoughts>();
+
          //public override string LabelCap => (string) this.CurStage.label.Formatted(this.depression.pawn.Named("HARMONIZER")).CapitalizeFirst();
         
          // public override void ExposeData()
@@ -20,45 +23,47 @@ namespace TRuth
         
          public override float MoodOffset()
          {
-             if (ThoughtUtility.ThoughtNullified(pawn, def) || pawn.Dead || pawn.needs?.mood == null || depression?.depressiveThoughts == null)
+             if (ThoughtUtility.ThoughtNullified(pawn, def) || pawn.Dead || pawn.needs?.mood == null || depression == null)
                  return 0.0f;
+             
+             this.SetForcedStage(depression.CurStageIndex);
              
              float sumOfPositiveThoughts = 0;
              float sumOfNegativeThoughts = 0;
-             Thought thought1 = new Thought_KilledInnocentAnimal();
-             List<Thought> thoughts = new List<Thought>();
-             pawn.needs.mood.thoughts.GetMoodThoughts(thought1, thoughts);
              
+             //pawn.needs.mood.thoughts.GetAllMoodThoughts(thoughts);
+             
+             List<Thought_Memory> memories = pawn.needs.mood.thoughts.memories.Memories;
+             foreach (var thoughtMemory in memories)
+             {
+                 if (thoughtMemory == this) continue;
+                 if (thoughtMemory.MoodOffset() > 0)
+                     sumOfPositiveThoughts += thoughtMemory.MoodOffset();
+                 else
+                     sumOfNegativeThoughts += thoughtMemory.MoodOffset();
+             }
+             
+             List<Thought> thoughts = new List<Thought>();
+             pawn.needs.mood.thoughts.situational.AppendMoodThoughts(thoughts);
              foreach (var thought in thoughts)
              {
-                 if (thought.CurStage.baseMoodEffect > 0)
-                     sumOfPositiveThoughts += thought.CurStage.baseMoodEffect;
+                 if (thought.MoodOffset() > 0)
+                     sumOfPositiveThoughts += thought.MoodOffset();
                  else
-                     sumOfNegativeThoughts += thought.CurStage.baseMoodEffect;
+                     sumOfNegativeThoughts += thought.MoodOffset();
              }
-        
-             float depressedthoughtsgood = -1f * (sumOfPositiveThoughts - sumOfPositiveThoughts * depression.depressiveThoughts.goodThoughtsMultiplier); //depression.CurStage.goodThoughtsMultiplier);
-             float depressedthoughtsbad = sumOfNegativeThoughts + sumOfNegativeThoughts * depression.depressiveThoughts.badThoughtsMultiplier;//depression.CurStage.badThoughtsMultiplier;
-        
              
-             Messages.Message("Depressed thoughts is: " + (depressedthoughtsbad + depressedthoughtsgood), MessageTypeDefOf.NeutralEvent);
-             return (float)depressedthoughtsgood + depressedthoughtsbad;
              
-             // double baseMoodOffset = (double) base.MoodOffset();
-             // double otherMood = (double)Mathf.Lerp(-1f, 1f, this.depression.pawn.needs.mood.CurLevel);
-             // float sensitivity = this.depression.pawn.GetStatValue(StatDefOf.PsychicSensitivity, cacheStaleAfterTicks: 1);
-             //return (float) (baseMoodOffset * otherMood) * sensitivity;
+             float depressedthoughtsgood = -1f * (sumOfPositiveThoughts 
+                                                  - sumOfPositiveThoughts 
+                                                  * me_depressiveThoughts.goodThoughtsMultiplier[CurStageIndex]);
+             float depressedthoughtsbad = (-1f * sumOfNegativeThoughts)
+                                            + sumOfNegativeThoughts 
+                                            * me_depressiveThoughts.badThoughtsMultiplier[CurStageIndex];
+             
+             //Messages.Message("Depressed thoughts is good: " + depressedthoughtsgood + " bad: " + depressedthoughtsbad), MessageTypeDefOf.NeutralEvent);
+             return depressedthoughtsgood + depressedthoughtsbad;
+             
          }
-        
-         // public override bool ShouldDiscard
-         // {
-         //     get
-         //     {
-         //         //Pawn pawn = depression.pawn;
-         //         return pawn.health.Dead 
-         //                || pawn.needs?.mood == null 
-         //                || !this.pawn.health.hediffSet.HasHediff(HediffDefOfTRuth.TRuth_DepressiveEpisode);
-         //     }
-         // }
     }
 }

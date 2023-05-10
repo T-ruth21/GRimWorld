@@ -19,5 +19,6 @@ namespace TRuth
         public Thought_PsychicHarmonizer ThoughtPsychicHarmonizer;
         public HediffComp_PsychicHarmonizer PsychicHarmonizer;
         public HediffWithComps HediffWithComps;
+        public Thought_OpinionOfMyLover op;
     }
 }

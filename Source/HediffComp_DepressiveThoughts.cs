@@ -6,7 +6,7 @@ namespace TRuth
 {
     public class HediffComp_DepressiveThoughts : HediffComp
   {
-    public HediffCompProperties_DepressiveThoughts Props => (HediffCompProperties_DepressiveThoughts) this.props;
+    //public HediffCompProperties_DepressiveThoughts Props => (HediffCompProperties_DepressiveThoughts) this.props;
 
     public override void CompPostTick(ref float severityAdjustment)
     {
@@ -16,7 +16,7 @@ namespace TRuth
       if (pawn.IsHashIntervalTick(150) || pawn.needs?.mood == null || pawn.Faction == null)
         return;
       
-      HaveThought(pawn);
+      //HaveThought(pawn);
       
       // if (pawn.Spawned)
       // {
@@ -43,9 +43,9 @@ namespace TRuth
           return;
         }
       }
-      Thought_Depressed newThought = (Thought_Depressed) ThoughtMaker.MakeThought(this.Props.thought);
+      //Thought_Depressed newThought = (Thought_Depressed) ThoughtMaker.MakeThought(this.Props.thought);
       //newThought.depression = (Hediff_Depression) this.parent;
-      pawn.needs.mood.thoughts.memories.TryGainMemory((Thought_Memory) newThought);
+      //pawn.needs.mood.thoughts.memories.TryGainMemory((Thought_Memory) newThought);
     }
     
     // private void AffectPawns(Pawn p, List<Pawn> pawns)
