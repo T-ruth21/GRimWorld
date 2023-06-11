@@ -15,7 +15,11 @@ namespace TRuth
         
         //public virtual HediffStage CurStage => !this.def.stages.NullOrEmpty<HediffStage>() ? this.def.stages[this.CurStageIndex] : (HediffStage) null;
         
-        //[LogPerformance]
+        // public Hediff_Depression(float initialSeverity)
+        // {
+        //     this.Severity = initialSeverity;
+        // }
+        
         public override void Tick()
         {
             base.Tick();
@@ -26,7 +30,7 @@ namespace TRuth
 
         private void HaveThought()
         {
-            if (pawn.IsHashIntervalTick(150) || pawn.needs?.mood == null || pawn.Faction == null)
+            if (pawn.IsHashIntervalTick(1500) || pawn.needs?.mood == null || pawn.Faction == null)
                 return;
             
             if (!pawn.RaceProps.Humanlike || pawn.needs?.mood?.thoughts == null) return;

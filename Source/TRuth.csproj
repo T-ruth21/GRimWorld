@@ -21,6 +21,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+    <Reference Include="0Harmony, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lib.Harmony.2.2.2\lib\net472\0Harmony.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
@@ -47,10 +51,8 @@
     <Compile Include="Defs\ModExtension_Hediff_Depression.cs" />
     <Compile Include="Defs\ModExtension_PlagueBullet.cs" />
     <Compile Include="Defs\ThoughtDefOfTRuth.cs" />
+    <Compile Include="DepressionUtility.cs" />
     <Compile Include="Grimworld.cs" />
-    <Compile Include="HediffCompProperties_DepressiveThoughts.cs" />
-    <Compile Include="HediffComp_DepressiveThoughts.cs" />
-    <Compile Include="HediffStage_DepressionStage.cs" />
     <Compile Include="Hediff_Depression.cs" />
     <Compile Include="JobGiver_FleeSpider.cs" />
     <Compile Include="MentalBreakWorker_InsectTerror.cs" />
@@ -61,6 +63,7 @@
     <Compile Include="ThoughtWorker_Arachnophobia.cs" />
     <Compile Include="ThoughtWorker_Depressed.cs" />
     <Compile Include="Thought_Depressed.cs" />
+    <Compile Include="TRuth_Depression.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Patches" />

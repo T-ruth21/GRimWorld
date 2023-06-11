@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>
+            Defs/HediffGiverSetDef[defName="Human"]/hediffGivers
+        </xpath>
+        <order>Append</order>
+        <value>
+            <li Class="HediffGiver_Random">
+                <hediff>TRuth_DepressiveEpisode</hediff>
+                <allowOnLodgers>false</allowOnLodgers>
+                <allowOnQuestRewardPawns>false</allowOnQuestRewardPawns>
+                <allowOnQuestReservedPawns>false</allowOnQuestReservedPawns>
+                <allowOnBeggars>false</allowOnBeggars>
+                <mtbDays>1200</mtbDays>
+                <partsToAffect>
+                    <li>Brain</li>
+                </partsToAffect>
+            </li>
+        </value>
+    </Operation>
+</Patch>

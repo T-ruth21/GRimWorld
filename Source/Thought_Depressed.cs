@@ -55,13 +55,10 @@ namespace TRuth
              
              
              float depressedthoughtsgood = -1f * (sumOfPositiveThoughts 
-                                                  - sumOfPositiveThoughts 
-                                                  * me_depressiveThoughts.goodThoughtsMultiplier[CurStageIndex]);
+                                                  - sumOfPositiveThoughts * me_depressiveThoughts.goodThoughtsMultiplier[CurStageIndex]);
              float depressedthoughtsbad = (-1f * sumOfNegativeThoughts)
-                                            + sumOfNegativeThoughts 
-                                            * me_depressiveThoughts.badThoughtsMultiplier[CurStageIndex];
+                                            + sumOfNegativeThoughts * me_depressiveThoughts.badThoughtsMultiplier[CurStageIndex];
              
-             //Messages.Message("Depressed thoughts is good: " + depressedthoughtsgood + " bad: " + depressedthoughtsbad), MessageTypeDefOf.NeutralEvent);
              return depressedthoughtsgood + depressedthoughtsbad;
              
          }
