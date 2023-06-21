@@ -54,10 +54,12 @@ namespace TRuth
              }
              
              
-             float depressedthoughtsgood = -1f * (sumOfPositiveThoughts 
-                                                  - sumOfPositiveThoughts * me_depressiveThoughts.goodThoughtsMultiplier[CurStageIndex]);
-             float depressedthoughtsbad = (-1f * sumOfNegativeThoughts)
-                                            + sumOfNegativeThoughts * me_depressiveThoughts.badThoughtsMultiplier[CurStageIndex];
+             // float depressedthoughtsgood = -1f * (sumOfPositiveThoughts 
+             //                                      - sumOfPositiveThoughts * me_depressiveThoughts.goodThoughtsMultiplier[CurStageIndex]);
+             // float depressedthoughtsbad = (-1f * sumOfNegativeThoughts)
+             //                              + sumOfNegativeThoughts * me_depressiveThoughts.badThoughtsMultiplier[CurStageIndex];
+             float depressedthoughtsgood = -1f * (1 - me_depressiveThoughts.goodThoughtsMultiplier[CurStageIndex]) * sumOfPositiveThoughts;
+             float depressedthoughtsbad = sumOfNegativeThoughts * me_depressiveThoughts.badThoughtsMultiplier[CurStageIndex] - sumOfNegativeThoughts;
              
              return depressedthoughtsgood + depressedthoughtsbad;
              
