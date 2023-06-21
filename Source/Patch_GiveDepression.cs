@@ -5,9 +5,11 @@ using System.Collections.Generic;
 
 namespace TRuth
 {
+    // Patch will be applied to class PawnDiedOrDownedThoughtsUtility in the method AppendThoughts_Relations
     [HarmonyPatch(typeof(PawnDiedOrDownedThoughtsUtility), "AppendThoughts_Relations")]
     internal static class PATCH_PawnDiedOrDownedThoughtsUtility_AppendThoughts_Relations
     {
+        //As a postfix this method will be executed after the main method, it can unitlize all the methods parameters
         [HarmonyPostfix]
         public static void Postfix(ref Pawn victim,
             ref DamageInfo? dinfo,
@@ -15,7 +17,7 @@ namespace TRuth
             ref List<IndividualThoughtToAdd> outIndividualThoughts,
             ref List<ThoughtToAddToAll> outAllColonistsThoughts)
         {
-            if (thoughtsKind != PawnDiedOrDownedThoughtsKind.Died)
+            if (thoughtsKind != PawnDiedOrDownedThoughtsKind.Died) //This patch is only applicable for deaths
             {
                 Log.Message("Thought kind was: " + thoughtsKind + ", leaving");
                 return;
@@ -23,12 +25,20 @@ namespace TRuth
 
             foreach (var thought in outIndividualThoughts)
             {
+                // a lot of different thoughts are handled by the method, it is a bit complicated to differentiate
                 if (thought.thought.def == ThoughtDefOf.WitnessedDeathBloodlust)
                     continue;
                 if (thought.thought.def == ThoughtDefOf.WitnessedDeathFamily)
+                {
                     DepressionUtility.AddDepression(thought.addTo, 0.3f, 0.1f, thought.thought.LabelCap);
+                    continue;
+                }
+
                 if (thought.thought.def == ThoughtDefOf.PawnWithGoodOpinionDied)
+                {
                     DepressionUtility.AddDepression(thought.addTo, 0.1f, 0.1f, thought.thought.LabelCap);
+                    continue;
+                }
 
                 //Death of Lover/Spouse
                 if (thought.thought.def == ThoughtDef.Named("MyLoverDied")
@@ -36,23 +46,38 @@ namespace TRuth
                     || thought.thought.def == ThoughtDef.Named("MyFianceeDied")
                     || thought.thought.def == ThoughtDef.Named("MyWifeDied")
                     || thought.thought.def == ThoughtDef.Named("MyHusbandDied"))
+                {
                     DepressionUtility.AddDepression(thought.addTo, 0.6f, 0.4f, thought.thought.LabelCap);
+                    continue;
+                }
                 //Death of Parent
                 if (thought.thought.def == ThoughtDef.Named("MyMotherDied")
                     || thought.thought.def == ThoughtDef.Named("MyFatherDied"))
+                {
                     DepressionUtility.AddDepression(thought.addTo, 0.4f, 0.3f, thought.thought.LabelCap);
+                    continue;
+                }
                 //Death of Child
                 if (thought.thought.def == ThoughtDef.Named("MySonDied")
                     || thought.thought.def == ThoughtDef.Named("MyDaughterDied"))
+                {
                     DepressionUtility.AddDepression(thought.addTo, 0.5f, 0.5f, thought.thought.LabelCap);
+                    continue;
+                }
                 //Death of Sibling
                 if (thought.thought.def == ThoughtDef.Named("MyBrotherDied")
                     || thought.thought.def == ThoughtDef.Named("MySisterDied"))
+                {
                     DepressionUtility.AddDepression(thought.addTo, 0.4f, 0.3f, thought.thought.LabelCap);
+                    continue;
+                }
                 //Death of Grandparents/Grandchild
                 if (thought.thought.def == ThoughtDef.Named("MyGrandchildDied")
                     || thought.thought.def == ThoughtDef.Named("MyGrandparentDied"))
+                {
                     DepressionUtility.AddDepression(thought.addTo, 0.2f, 0.3f, thought.thought.LabelCap);
+                    continue;
+                }
                 //Death of all other Family
                 if (thought.thought.def == ThoughtDef.Named("MyNieceDied")
                     || thought.thought.def == ThoughtDef.Named("MyNephewDied")
@@ -61,51 +86,9 @@ namespace TRuth
                     || thought.thought.def == ThoughtDef.Named("MyUncleDied")
                     || thought.thought.def == ThoughtDef.Named("MyCousinDied")
                     || thought.thought.def == ThoughtDef.Named("MyKinDied"))
+                {
                     DepressionUtility.AddDepression(thought.addTo, 0.1f, 0.2f, thought.thought.LabelCap);
-            }
-        }
-    }
-
-    [HarmonyPatch(typeof(InteractionWorker), "Interacted")]
-    internal static class PATCH_InteractionWorker_Interacted
-    {
-        [HarmonyPostfix]
-        public static void Postfix(
-            InteractionWorker __instance,
-            Pawn initiator,
-            Pawn recipient,
-            List<RulePackDef> extraSentencePacks,
-            out string letterText,
-            out string letterLabel,
-            out LetterDef letterDef,
-            out LookTargets lookTargets)
-        {
-            letterText = (string) null;
-            letterLabel = (string) null;
-            letterDef = (LetterDef) null;
-            lookTargets = (LookTargets) null;
-
-            if (recipient == null)
-            {
-                Log.Message("recipient is null");
-                return;
-            }
-            
-            switch (__instance)
-            {
-                case InteractionWorker_DeepTalk _:
-                    Log.Message(recipient.Name + "'s depression is treated by DeepTalk. Severity: " + recipient.health.hediffSet.GetFirstHediffOfDef(HediffDefOfTRuth.TRuth_DepressiveEpisode).Severity);
-                    HealthUtility.AdjustSeverity(initiator, HediffDefOfTRuth.TRuth_DepressiveEpisode, -0.005f);
-                    HealthUtility.AdjustSeverity(recipient, HediffDefOfTRuth.TRuth_DepressiveEpisode, -0.01f);
-                    Log.Message(recipient.Name + "'s depression was treated by DeepTalk with " + initiator.Name + ". Severity: " + recipient.health.hediffSet.GetFirstHediffOfDef(HediffDefOfTRuth.TRuth_DepressiveEpisode).Severity);
-                    return;
-                case InteractionWorker_Insult _:
-                    Log.Message(initiator.Name + " insulted " + recipient.Name);
-                    HealthUtility.AdjustSeverity(recipient, HediffDefOfTRuth.TRuth_DepressiveEpisode, 0.01f);
-                    return;
-                case InteractionWorker_Breakup _:
-                    DepressionUtility.AddDepression(recipient, 0.4f, 0.3f);
-                    return;
+                }
             }
         }
     }

@@ -11,16 +11,8 @@ namespace TRuth
          public Hediff_Depression depression;
 
          public ModExtension_DepressiveThoughts me_depressiveThoughts => 
-             base.def.GetModExtension<ModExtension_DepressiveThoughts>();
-
-         //public override string LabelCap => (string) this.CurStage.label.Formatted(this.depression.pawn.Named("HARMONIZER")).CapitalizeFirst();
-        
-         // public override void ExposeData()
-         // {
-         //     base.ExposeData();
-         //     Scribe_References.Look<Hediff_Depression>(ref this.depression, "depression");
-         // }
-        
+             base.def.GetModExtension<ModExtension_DepressiveThoughts>(); //Gets the mod extension from the Def
+         
          public override float MoodOffset()
          {
              if (ThoughtUtility.ThoughtNullified(pawn, def) || pawn.Dead || pawn.needs?.mood == null || depression == null)
@@ -28,15 +20,14 @@ namespace TRuth
              
              this.SetForcedStage(depression.CurStageIndex);
              
-             float sumOfPositiveThoughts = 0;
-             float sumOfNegativeThoughts = 0;
-             
-             //pawn.needs.mood.thoughts.GetAllMoodThoughts(thoughts);
-             
+             float sumOfPositiveThoughts = 0; //Total sum of positive mood offset
+             float sumOfNegativeThoughts = 0; //Total sum of negative mood offset
+
+             // Memory thoughts and Mood thoughts work slightly differently but are both relevant for this calculation
              List<Thought_Memory> memories = pawn.needs.mood.thoughts.memories.Memories;
              foreach (var thoughtMemory in memories)
              {
-                 if (thoughtMemory == this) continue;
+                 if (thoughtMemory == this) continue; // avoid recursion, the game breaks when this check is not there
                  if (thoughtMemory.MoodOffset() > 0)
                      sumOfPositiveThoughts += thoughtMemory.MoodOffset();
                  else
@@ -53,16 +44,13 @@ namespace TRuth
                      sumOfNegativeThoughts += thought.MoodOffset();
              }
              
-             
-             // float depressedthoughtsgood = -1f * (sumOfPositiveThoughts 
-             //                                      - sumOfPositiveThoughts * me_depressiveThoughts.goodThoughtsMultiplier[CurStageIndex]);
-             // float depressedthoughtsbad = (-1f * sumOfNegativeThoughts)
-             //                              + sumOfNegativeThoughts * me_depressiveThoughts.badThoughtsMultiplier[CurStageIndex];
+             // calculates a the amount of negative mood from being unable to enjoy good things
              float depressedthoughtsgood = -1f * (1 - me_depressiveThoughts.goodThoughtsMultiplier[CurStageIndex]) * sumOfPositiveThoughts;
+             // calculates the amount of negative mood from seeing bad events as more dire than they are
              float depressedthoughtsbad = sumOfNegativeThoughts * me_depressiveThoughts.badThoughtsMultiplier[CurStageIndex] - sumOfNegativeThoughts;
              
+             //Total mood offset is a sum of both
              return depressedthoughtsgood + depressedthoughtsbad;
-             
          }
     }
 }

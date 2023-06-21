@@ -45,25 +45,15 @@
     <None Include="..\Common\Patches\**" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CampfireCozyness.cs" />
     <Compile Include="Defs\HediffDefOfTRuth.cs" />
     <Compile Include="Defs\ModExtension_DepressiveThoughts.cs" />
     <Compile Include="Defs\ModExtension_Hediff_Depression.cs" />
-    <Compile Include="Defs\ModExtension_PlagueBullet.cs" />
     <Compile Include="Defs\ThoughtDefOfTRuth.cs" />
     <Compile Include="DepressionUtility.cs" />
-    <Compile Include="Grimworld.cs" />
     <Compile Include="Hediff_Depression.cs" />
-    <Compile Include="JobGiver_FleeSpider.cs" />
-    <Compile Include="MentalBreakWorker_InsectTerror.cs" />
-    <Compile Include="MentalState_PanicFleeSpider.cs" />
     <Compile Include="Patch_GiveDepression.cs" />
     <Compile Include="Patch_TreatDepression.cs" />
-    <Compile Include="PlagueGun.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpiderUtility.cs" />
-    <Compile Include="ThoughtWorker_Arachnophobia.cs" />
-    <Compile Include="ThoughtWorker_Depressed.cs" />
     <Compile Include="Thought_Depressed.cs" />
     <Compile Include="TRuth_Depression.cs" />
   </ItemGroup>

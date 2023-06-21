@@ -13,8 +13,8 @@ namespace TRuth
     {
         static TRuth_Depression()
         {
-            Harmony harmonyInstance = new Harmony("TRuth.Depression");
-            harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
+            Harmony harmonyInstance = new Harmony("TRuth.Depression");    //Creates Harmony instance
+            harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());      //Patches my code into existing game
             Log.Message("TRuth's depression successfully enabled. Happy ruminating.");
         }
     }

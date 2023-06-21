@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
+    <!-- adds depression on a random basis, sometimes it doesn't need a reason -->
+    <!-- this is a patch operation which adds elements to base game defs -->
     <Operation Class="PatchOperationAdd">
         <xpath>
             Defs/HediffGiverSetDef[defName="Human"]/hediffGivers

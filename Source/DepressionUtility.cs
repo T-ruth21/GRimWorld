@@ -9,26 +9,26 @@ namespace TRuth
     {
         public static void AddDepression(Pawn pawn, float chance, float initSeverity = 0.2f, string reason = "No Reason Given")
         {
-            Hediff_Depression depression = pawn.health.hediffSet.GetFirstHediff<Hediff_Depression>();
+            Hediff_Depression depression = pawn.health.hediffSet.GetFirstHediff<Hediff_Depression>(); //Picks up depression if pawn has it
             var letterText = (string) null;
             var letterLabel = (string) null;
             var letterDef = (LetterDef) null;
             var lookTargets = (LookTargets) null;
             var randValue = Rand.Value;
 
-            if (!(randValue <= chance))
+            if (!(randValue <= chance)) // Calculates probability for depression
             {
                 Log.Message("No depression added for: " + pawn.Name + " Rand: " + randValue + " Chance: " + chance + " Reason: " + reason);
                 return;
             }
                 
-            if (depression == null)
+            if (depression == null) //Add depression if the pawn doesn't have it
             {
                 depression = (Hediff_Depression)pawn.health.AddHediff(HediffDefOfTRuth.TRuth_DepressiveEpisode, pawn.health.hediffSet.GetBrain());
                 depression.Severity = initSeverity;
                 LetterAboutDepression(pawn, " has caught depression.",out letterText, out letterLabel, out letterDef, out lookTargets, reason);
             }
-            else
+            else // Adds severity if the pawn is already depressed
             {
                 HealthUtility.AdjustSeverity(pawn, depression.def, initSeverity);
                 LetterAboutDepression(pawn, " has gained additional depression.",out letterText, out letterLabel, out letterDef, out lookTargets, reason);
@@ -51,7 +51,7 @@ namespace TRuth
             out string letterLabel,
             out LetterDef letterDef,
             out LookTargets lookTargets,
-            string reason)
+            string reason) // Letter alerts the player and provides detailed information.
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine(pawn.LabelShort + addedText);

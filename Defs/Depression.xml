@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Defs>
+  <!-- Base definition of depression as a disease -->
   <HediffDef ParentName="DiseaseBase">
     <defName>TRuth_DepressiveEpisode</defName>
     <hediffClass>TRuth.Hediff_Depression</hediffClass>
@@ -8,9 +9,10 @@
     <description>A very subtle, yet serious illness of the mind.</description>
     <initialSeverity>0.8</initialSeverity>
     <minSeverity>0.00</minSeverity>
-	<maxSeverity>1.2</maxSeverity>
+	  <maxSeverity>1.2</maxSeverity>
     <chanceToCauseNoPain>1</chanceToCauseNoPain>
     <tendable>true</tendable>
+    <!-- Different stage of the illness -->
     <stages>
       <!-- managed -->
       <li>
@@ -68,6 +70,7 @@
       </li>
       <!-- severe -->
       <li>
+        <!-- Different stats are accesses slightly differently -->
         <minSeverity>0.6</minSeverity>
         <label>medium</label>
         <restFallFactor>1.5</restFallFactor>
@@ -146,6 +149,7 @@
       </li>
     </stages>
     <comps>
+      <!-- Related to being able to be tended with medicine -->
       <li Class="HediffCompProperties_TendDuration">
         <baseTendDurationHours>60</baseTendDurationHours>
         <severityPerDayTended>-0.03</severityPerDayTended>
@@ -158,6 +162,7 @@
         </severityPerDayNotImmuneRandomFactor>
       </li>
     </comps>
+    <!-- Relation to the depression mood modifier -->
     <modExtensions>
       <li Class="TRuth.ModExtension_Hediff_Depression">
           <ThoughtDef>TRuth_DepressedThoughts</ThoughtDef>
@@ -168,8 +173,8 @@
   <ThoughtDef>
     <defName>TRuth_DepressedThoughts</defName>
     <thoughtClass>TRuth.Thought_Depressed</thoughtClass>
-    <!-- <effectMultiplyingStat>Consciousness</effectMultiplyingStat> -->
     <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    <!-- Stages match the stages of the illness, mainly for labels and flavour text -->
     <stages>
       <li>
         <label>something feels off</label>
@@ -202,6 +207,7 @@
         <baseMoodEffect>-33</baseMoodEffect>
       </li>
     </stages>
+    <!-- The numbers for dynamic mood calculation -->
     <modExtensions>
       <li Class="TRuth.ModExtension_DepressiveThoughts">
         <goodThoughtsMultiplier>
@@ -223,5 +229,4 @@
       </li>
     </modExtensions>
   </ThoughtDef>
-
 </Defs>
