@@ -35,10 +35,16 @@ namespace TRuth
                 switch (__instance)
                 {
                     case InteractionWorker_DeepTalk _:
-                        Log.Message(recipient.Name + "'s depression is treated by DeepTalk. Severity: " + recipient.health.hediffSet.GetFirstHediffOfDef(HediffDefOfTRuth.TRuth_DepressiveEpisode).Severity);
-                        HealthUtility.AdjustSeverity(initiator, HediffDefOfTRuth.TRuth_DepressiveEpisode, -0.005f); // Adjust severity has an internal check whether a pawn has the specified hediff and can therefore be used without a separate check
-                        HealthUtility.AdjustSeverity(recipient, HediffDefOfTRuth.TRuth_DepressiveEpisode, -0.01f);
-                        Log.Message(recipient.Name + "'s depression was treated by DeepTalk with " + initiator.Name + ". Severity: " + recipient.health.hediffSet.GetFirstHediffOfDef(HediffDefOfTRuth.TRuth_DepressiveEpisode).Severity);
+                        if (initiator.health.hediffSet.HasHediff(HediffDefOfTRuth.TRuth_DepressiveEpisode))
+                        {
+                            HealthUtility.AdjustSeverity(initiator, HediffDefOfTRuth.TRuth_DepressiveEpisode, -0.005f); // Deep Talk can treat depression in both participants
+                            MoteMaker.ThrowText(initiator.Position.ToVector3(), initiator.MapHeld, "Depression treated", 10f); //Feedback is given to the player
+                        }
+                        if (recipient.health.hediffSet.HasHediff(HediffDefOfTRuth.TRuth_DepressiveEpisode))
+                        {
+                            HealthUtility.AdjustSeverity(recipient, HediffDefOfTRuth.TRuth_DepressiveEpisode, -0.01f);
+                            MoteMaker.ThrowText(recipient.Position.ToVector3(), initiator.MapHeld, "Depression treated", 10f);
+                        }
                         return;
                     case InteractionWorker_Insult _:
                         Log.Message(initiator.Name + " insulted " + recipient.Name);
@@ -47,6 +53,8 @@ namespace TRuth
                         return;
                     case InteractionWorker_Breakup _:
                         DepressionUtility.AddDepression(recipient, 0.4f, 0.3f);
+                        return;
+                    default:
                         return;
                 }
             }
